@@ -33,7 +33,9 @@ UTILS = \
 	TRUE \
 	FALSE \
 	YES \
-	PWD
+	PWD \
+	RANDOM 
+
 
 __TESTEXEC_LIBS =
 __TESTEXEC_NAME = __testexec
@@ -139,6 +141,9 @@ YES_NAME = yes
 
 PWD_LIBS = 
 PWD_NAME = pwd
+
+RANDOM_LIBS = 
+RANDOM_NAME = random
 
 define UTIL_TEMPLATE =
 

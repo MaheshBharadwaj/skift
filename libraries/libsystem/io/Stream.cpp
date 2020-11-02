@@ -4,6 +4,7 @@
 #include <libsystem/Assert.h>
 #include <libsystem/core/Plugs.h>
 #include <libsystem/core/Printf.h>
+#include <libsystem/core/Scanf.h>
 #include <libsystem/io/Stream.h>
 #include <libsystem/io/Stream_internal.h>
 #include <libsystem/math/MinMax.h>
@@ -371,6 +372,24 @@ int stream_vprintf(Stream *stream, const char *fmt, va_list va)
     info.allocated = -1;
 
     return __printf(&info, va);
+}
+
+int stream_parse(Stream *stream, const char *const fmt, ...)
+{
+    va_list va;
+    va_start(va, fmt);
+
+    int result = stream_vscanf(stream, fmt, va);
+
+    va_end(va);
+
+    return result;
+}
+
+int stream_vscanf(Stream *stream, const char *const fmt, va_list va)
+{
+    __unused(stream);
+    return __scanf(fmt, va);
 }
 
 bool stream_is_end_file(Stream *stream)

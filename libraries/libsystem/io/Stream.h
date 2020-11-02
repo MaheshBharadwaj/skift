@@ -67,3 +67,11 @@ int stream_vprintf(Stream *stream, const char *fmt, va_list va);
 #define printf(__args...) stream_format(out_stream, __args)
 
 #define vprintf(__fmt, __va) stream_vprintf(out_stream, __fmt, __va)
+
+int stream_parse(Stream *stream, const char *const fmt, ...);
+
+int stream_vscanf(Stream *stream, const char *const fmt, va_list va);
+
+#define scanf(__args...) stream_parse(in_stream, __args)
+
+#define vscanf(__fmt, __va) stream_vscanf(in_stream, __fmt, __va)
